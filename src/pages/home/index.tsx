@@ -91,7 +91,7 @@ export default function Home() {
 
   return (
     <div className="bg-blue-50">
-      <div className="flex items-center justify-between h-14 w-full bg-black sticky top-0 z-20000 px-5">
+      <div className="flex items-center justify-between h-14 w-full bg-black sticky top-0 z-[10000] px-5">
         <div className="flex gap-2">
           {keywords.length > 0 ? (
             keywords.map((kw: string) => (
@@ -135,8 +135,9 @@ export default function Home() {
             <div className="mt-1">订阅</div>
           </Space>
         </Button>
+        x
       </div>
-      <List>
+      <List className="min-h-[900px]">
         {items?.map((item: any, index) => (
           <List.Item className="w-full relative" key={index}>
             {
