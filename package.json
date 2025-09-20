@@ -25,6 +25,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "echarts": "^6.0.0",
+    "echarts-wordcloud": "^2.1.0",
     "http-proxy-middleware": "^3.0.5",
     "i18next": "^23.5.1",
     "i18next-browser-languagedetector": "^7.1.0",

@@ -1,7 +1,9 @@
+import { List } from 'antd-mobile'
 import { useData } from 'src/hooks/useData'
 import RadarChart from 'src/components/radar-chart'
-import { List } from 'antd-mobile'
 import AuthorTypeChart from 'src/components/author-type-chart'
+import TargetChart from 'src/components/target-chart'
+import EmotionChart from 'src/components/emotion-chart'
 
 export default function Report() {
   const { data } = useData()
@@ -23,6 +25,19 @@ export default function Report() {
     { name: '品牌爱好者', value: 10 },
   ]
 
+  const targetData = [
+    { name: '种草', value: 70 },
+    { name: '测评', value: 20 },
+    { name: '晒单', value: 10 },
+    { name: '其他', value: 5 },
+  ]
+
+  const emotionData = [
+    { name: '正面', noteValue: 60, commentValue: 120 },
+    { name: '中性', noteValue: 30, commentValue: 60 },
+    { name: '负面', noteValue: 10, commentValue: 20 },
+  ]
+
   return (
     <div className="bg-blue-50 min-h-[900px]">
       <List>
@@ -31,6 +46,12 @@ export default function Report() {
         </List.Item>
         <List.Item title="作者类型分布">
           <AuthorTypeChart data={authorData} />
+        </List.Item>
+        <List.Item title="作者发笔记意图分布">
+          <TargetChart data={targetData} />
+        </List.Item>
+        <List.Item title="情感分布分析">
+          <EmotionChart data={emotionData} />
         </List.Item>
       </List>
     </div>

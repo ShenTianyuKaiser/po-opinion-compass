@@ -1,21 +1,21 @@
 import React, { useEffect } from 'react'
 import * as echarts from 'echarts'
 
-interface AuthorTypeChartProps {
+interface TargetChartProps {
   data: { name: string; value: number }[]
 }
 
-const AuthorTypeChart = (props: AuthorTypeChartProps) => {
+const TargetChart = (props: TargetChartProps) => {
   const { data } = props
 
   useEffect(() => {
-    const chartDom = document.getElementById('author-type-chart')
+    const chartDom = document.getElementById('target-chart')
     // eslint-disable-next-line import/namespace
     const myChart = echarts.init(chartDom!)
 
     const option = {
       title: {
-        text: '作者类型分布',
+        text: '笔记作者目的分布',
         left: 'center',
       },
       tooltip: {
@@ -29,7 +29,7 @@ const AuthorTypeChart = (props: AuthorTypeChartProps) => {
       },
       series: [
         {
-          name: '作者类型',
+          name: '作者目的',
           type: 'pie',
           radius: '50%',
           data: data,
@@ -54,7 +54,7 @@ const AuthorTypeChart = (props: AuthorTypeChartProps) => {
     }
   }, [data])
 
-  return <div id="author-type-chart" style={{ width: '100%', height: '500px' }}></div>
+  return <div id="target-chart" style={{ width: '100%', height: '400px' }}></div>
 }
 
-export default AuthorTypeChart
+export default TargetChart

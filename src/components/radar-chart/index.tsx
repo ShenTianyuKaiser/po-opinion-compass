@@ -29,7 +29,7 @@ const RadarChart = (props: RadarChartProps) => {
     // 配置项
     const option = {
       title: {
-        text: '关键词声量分布',
+        text: '关键词相关笔记声量分布',
         left: 'center',
       },
       tooltip: {},
