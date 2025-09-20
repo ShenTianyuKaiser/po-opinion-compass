@@ -6,7 +6,6 @@ import './index.less'
 
 export default function Home() {
   const { data } = useData()
-  // const { data, isInitialLoading, isError } = useListRecords()
   const items: any[] = (data?.items || []).filter((item: any) => item.fields['笔记标题']?.[0]?.text !== '')
   const [keywords, setKeywords] = useState<string[]>([])
   const [currentSubsribeInputValue, setCurrentSubsribeInputValue] = useState('')
@@ -135,7 +134,6 @@ export default function Home() {
             <div className="mt-1">订阅</div>
           </Space>
         </Button>
-        x
       </div>
       <List className="min-h-[900px]">
         {items?.map((item: any, index) => (
