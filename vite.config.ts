@@ -30,6 +30,13 @@ export default defineConfig({
     hmr: {
       protocol: 'ws',
       host: 'localhost',
-    }
+    },
+    proxy: {
+      '/open-apis': {
+        target: 'https://open.feishu.cn',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/open-apis/, '/open-apis'),
+      },
+    },
   },
 })
