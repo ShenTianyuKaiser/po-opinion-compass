@@ -17,7 +17,6 @@ interface RadarData {
 const RadarChart = (props: RadarChartProps) => {
   const { data } = props
   const { keyword, noteCount, favoriteCount, likeCount, shareCount, commentCount } = data
-  console.warn('------RadarChart---------', { data })
 
   useEffect(() => {
     // 初始化 ECharts 实例
@@ -81,7 +80,7 @@ const RadarChart = (props: RadarChartProps) => {
 
   return (
     <div>
-      <div id="radar-chart" style={{ width: '100%', height: '400px' }}></div>
+      <div id="radar-chart" style={{ width: '100%', height: '500px' }}></div>
     </div>
   )
 }
