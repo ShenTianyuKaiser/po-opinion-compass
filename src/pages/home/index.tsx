@@ -3,9 +3,11 @@ import { mockData } from 'src/pages/home/mock-data'
 import { HeartOutline, StarOutline, MessageOutline, AddOutline, CloseOutline } from 'antd-mobile-icons'
 import './index.less'
 import { useState } from 'react'
+import { useData } from 'src/hooks/useData'
 
 export default function Home() {
-  // const {data, isInitialLoading, isError} = useListRecords();
+  useData()
+  // const { data, isInitialLoading, isError } = useListRecords()
   const items: any[] = (mockData.data?.items || []).filter((item) => item.fields['笔记标题']?.[0]?.text !== '')
   const [keywords, setKeywords] = useState<string[]>([])
   const [currentSubsribeInputValue, setCurrentSubsribeInputValue] = useState('')
