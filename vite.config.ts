@@ -32,10 +32,10 @@ export default defineConfig({
       host: 'localhost',
     },
     proxy: {
-      '/open-apis': {
+      '/api/feishu': {
         target: 'https://open.feishu.cn',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/open-apis/, '/open-apis'),
+        rewrite: (path) => path.replace(/^\/api\/feishu/, ''),
       },
     },
   },

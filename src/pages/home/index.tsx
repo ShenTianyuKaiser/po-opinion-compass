@@ -1,17 +1,18 @@
 import { List, Card, Input, Button, Space, Modal, Toast } from 'antd-mobile'
-import { mockData } from 'src/pages/home/mock-data'
 import { HeartOutline, StarOutline, MessageOutline, AddOutline, CloseOutline } from 'antd-mobile-icons'
-import './index.less'
 import { useState } from 'react'
 import { useData } from 'src/hooks/useData'
+import './index.less'
 
 export default function Home() {
-  useData()
+  const { data } = useData()
   // const { data, isInitialLoading, isError } = useListRecords()
-  const items: any[] = (mockData.data?.items || []).filter((item) => item.fields['笔记标题']?.[0]?.text !== '')
+  const items: any[] = (data?.items || []).filter((item: any) => item.fields['笔记标题']?.[0]?.text !== '')
   const [keywords, setKeywords] = useState<string[]>([])
   const [currentSubsribeInputValue, setCurrentSubsribeInputValue] = useState('')
   const [currentKeyword, setCurrentKeyword] = useState('')
+
+  console.warn('------home---------', { data, items })
 
   const getItemTags = (item: any) => {
     const tagText = item.fields['笔记标签']?.[0]?.text
