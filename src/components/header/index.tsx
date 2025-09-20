@@ -8,7 +8,7 @@ export function Header(props: IProps) {
   const { t } = useTranslation()
 
   return (
-    <div className="flex w-full items-center justify-between border bg-amber-400 bg-opacity-70 px-4 py-4 md:px-12">
+    <div className="flex sticky top-0 w-full items-center justify-between border bg-amber-400 bg-opacity-70 py-4 md:px-12 z-10000">
       {/*<a href="/" className="text-xs md:text-base">*/}
       {/*  Vite React TS Tailwind Starter*/}
       {/*</a>*/}

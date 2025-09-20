@@ -21,6 +21,7 @@
     "@transmart/cli": "^0.2.4",
     "antd-mobile": "^5.39.0",
     "antd-mobile-icons": "^0.3.0",
+    "axios": "^1.12.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "i18next": "^23.5.1",

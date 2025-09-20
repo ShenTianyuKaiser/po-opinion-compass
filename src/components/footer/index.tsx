@@ -60,7 +60,7 @@ export function FooterPanel(props: IProps) {
   }
 
   return (
-    <div className="fixed left-0 bottom-0 flex w-full items-center justify-between border bg-opacity-70 px-4 md:px-12">
+    <div className="flex sticky bottom-0 w-full items-center justify-between border bg-opacity-70 md:px-12 z-10000">
       <Footer className="w-full justify-around" chips={chips} onChipClick={onChipClick} />
     </div>
   )
