@@ -1,5 +1,13 @@
 import { List, Card, Input, Button, Space, Modal, Toast } from 'antd-mobile'
-import { HeartOutline, StarOutline, MessageOutline, AddOutline, CloseOutline, UpCircleOutline } from 'antd-mobile-icons'
+import {
+  HeartOutline,
+  StarOutline,
+  MessageOutline,
+  AddOutline,
+  CloseOutline,
+  UpCircleOutline,
+  DownCircleOutline,
+} from 'antd-mobile-icons'
 import UserInfoPanel from 'src/components/user-info-panel'
 import { useEffect, useState } from 'react'
 import { useData } from 'src/hooks/useData'
@@ -109,6 +117,29 @@ export default function Home() {
           <UpCircleOutline fontSize={20} />
         </Button>
       </div>
+      {/*每次点击，都矛点到下一个list item的按钮*/}
+      <div className="fixed bottom-[80px] left-1/2 -translate-x-1/2 z-[10000] mx-auto">
+        <div className="flex items-center justify-center gap-1 w-[112px] h-[54px] bg-black rounded-full">
+          <DownCircleOutline
+            fontSize={30}
+            color="white"
+            onClick={() => {
+              const listItems = document.querySelectorAll('.adm-list-item')
+              if (listItems.length > 0) {
+                const scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+                for (let i = 0; i < listItems.length; i++) {
+                  const item = listItems[i] as HTMLElement
+                  if (item.offsetTop > scrollTop + 120) {
+                    window.scrollTo({ top: item.offsetTop - 120, behavior: 'smooth' })
+                    break
+                  }
+                }
+              }
+            }}
+          />
+          <div className="text-base font-medium text-white">下一篇</div>
+        </div>
+      </div>
       <UserInfoPanel />
       <div className="flex items-center justify-between h-14 w-full bg-black sticky top-14 z-[10000] px-5">
         <div className="flex gap-2">
@@ -172,7 +203,7 @@ export default function Home() {
                   {item.fields['笔记内容']?.[0]?.text ||
                     '#保时捷 #保时捷911 #保时捷718 #保时捷Taycan #保时捷Macan #保时捷Cayenne #保时捷Panamera #保时捷提车 #保时捷改装 #保时捷生活方式'}
                 </div>
-                <div className="w-full flex gap-2 p-5 flex-wrap">
+                <div className="w-full h-[90px] flex gap-2 p-5 flex-wrap">
                   {getItemTags(item).map((label: string, idx: number) => (
                     <div
                       className="flex justify-center items-centern w-fit h-[22px] px-2 text-black text-[11px] bg-[#F2F4F7] rounded-b"
@@ -182,7 +213,7 @@ export default function Home() {
                     </div>
                   ))}
                 </div>
-                <div className="w-full flex justify-between items-center p-5">
+                <div className="w-full h-[80px] flex justify-between items-center p-5">
                   <Input className="bg-[#F2F4F7] rounded-full w-[155px] p-2" placeholder="评论点啥~" />
                   <div className="flex items-center gap-2">
                     <div className="flex items-center gap-[2px]">
