@@ -214,7 +214,15 @@ export default function Home() {
                   ))}
                 </div>
                 <div className="w-full h-[80px] flex justify-between items-center p-5">
-                  <Input className="bg-[#F2F4F7] rounded-full w-[155px] p-2" placeholder="评论点啥~" />
+                  <Button
+                    className="bg-[#F2F4F7] rounded-full w-[155px] p-2"
+                    onClick={() => {
+                      // 跳转小红书笔记详情
+                      window.open(item.fields['笔记链接']?.[0]?.text, '_blank')
+                    }}
+                  >
+                    跳转详情
+                  </Button>
                   <div className="flex items-center gap-2">
                     <div className="flex items-center gap-[2px]">
                       <HeartOutline fontSize={20} />
