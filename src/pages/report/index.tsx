@@ -10,13 +10,28 @@ import PopularChart from 'src/components/popular-chart'
 export default function Report() {
   const { data } = useData()
   const items: any[] = (data?.items || []).filter((item: any) => item.fields['笔记标题']?.[0]?.text !== '')
+
+  const parseCount = (str: string): number => {
+    if (str.endsWith('万')) {
+      return parseFloat(str) * 10000
+    }
+    return parseInt(str) || 0
+  }
+
+  const favoriteCount = items.reduce((sum, item) => sum + Number(parseCount(item.fields['收藏数']?.[0]?.text) || 0), 0)
+  const commentCount = items.reduce((sum, item) => sum + Number(parseCount(item.fields['评论数']?.[0]?.text) || 0), 0)
+  const likeCount = items.reduce((sum, item) => sum + Number(parseCount(item.fields['点赞数']?.[0]?.text) || 0), 0)
+  let max = Math.max(favoriteCount, commentCount, likeCount)
+  if (max < 100) {
+    max = 100
+  }
+  // 打印所有items中的点赞数
   const radarChartData = {
-    keyword: '关键词',
-    noteCount: items.length,
-    favoriteCount: items.reduce((sum, item) => sum + Number(item.fields['收藏数']?.[0]?.text || 0), 0),
-    commentCount: items.reduce((sum, item) => sum + Number(item.fields['评论数']?.[0]?.text || 0), 0),
-    shareCount: items.reduce((sum, item) => sum + Number(item.fields['分享数']?.[0]?.text || 0), 0),
-    likeCount: items.reduce((sum, item) => sum + Number(item.fields['点赞数']?.[0]?.text || 0), 0),
+    keyword: '全部关键词',
+    favoriteCount,
+    commentCount,
+    likeCount,
+    max,
   }
 
   const authorData = [

@@ -5,7 +5,6 @@ import {
   MessageOutline,
   AddOutline,
   CloseOutline,
-  UpCircleOutline,
   DownCircleOutline,
 } from 'antd-mobile-icons'
 import UserInfoPanel from 'src/components/user-info-panel'
@@ -104,19 +103,6 @@ export default function Home() {
 
   return (
     <div className="bg-blue-50">
-      {/*回到顶部按钮*/}
-      <div className="fixed bottom-20 right-5 z-[10000]">
-        <Button
-          className="flex items-center justify-center bg-white w-10 h-10"
-          fill="solid"
-          size="small"
-          onClick={() => {
-            window.scrollTo({ top: 0, behavior: 'smooth' })
-          }}
-        >
-          <UpCircleOutline fontSize={20} />
-        </Button>
-      </div>
       {/*每次点击，都矛点到下一个list item的按钮*/}
       <div className="fixed bottom-[80px] left-1/2 -translate-x-1/2 z-[10000] mx-auto">
         <div className="flex items-center justify-center gap-1 w-[112px] h-[54px] bg-black rounded-full">

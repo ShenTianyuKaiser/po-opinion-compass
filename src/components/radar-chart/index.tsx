@@ -6,17 +6,16 @@ interface RadarChartProps {
 }
 
 interface RadarData {
+  max: number
   keyword: string
-  noteCount: number
   favoriteCount: number
   commentCount: number
-  shareCount: number
   likeCount: number
 }
 
 const RadarChart = (props: RadarChartProps) => {
   const { data } = props
-  const { keyword, noteCount, favoriteCount, likeCount, shareCount, commentCount } = data
+  const { max, keyword, favoriteCount, likeCount, commentCount } = data
 
   useEffect(() => {
     // 初始化 ECharts 实例
@@ -40,11 +39,9 @@ const RadarChart = (props: RadarChartProps) => {
       radar: {
         // 定义雷达图的维度
         indicator: [
-          { name: '笔记数', max: 100 },
-          { name: '收藏数', max: 100 },
-          { name: '评论数', max: 100 },
-          { name: '分享数', max: 100 },
-          { name: '点赞数', max: 100 },
+          { name: '收藏数', max },
+          { name: '评论数', max },
+          { name: '点赞数', max },
         ],
         radius: '65%',
         center: ['50%', '50%'],
@@ -55,7 +52,7 @@ const RadarChart = (props: RadarChartProps) => {
           type: 'radar',
           data: [
             {
-              value: [noteCount, favoriteCount, commentCount, shareCount, likeCount], // 关键词2的数据
+              value: [favoriteCount, commentCount, likeCount], // 关键词2的数据
               name: keyword,
             },
           ],

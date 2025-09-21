@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react'
 import { Footer } from 'antd-mobile'
 import { ChipItem } from 'antd-mobile/es/components/footer'
 import { useNavigate } from 'react-router-dom'
-import { HistogramOutline, SearchOutline, UserOutline } from 'antd-mobile-icons'
+import { HistogramOutline, SearchOutline } from 'antd-mobile-icons'
 
 import './index.less'
 
@@ -26,15 +26,6 @@ export function FooterPanel(props: IProps) {
         <div className="flex flex-col items-center text-black">
           <HistogramOutline color="black" fontSize={20} />
           报告
-        </div>
-      ),
-      type: 'link',
-    },
-    {
-      text: (
-        <div className="flex flex-col items-center text-black">
-          <UserOutline color="black" fontSize={20} />
-          我的
         </div>
       ),
       type: 'link',
