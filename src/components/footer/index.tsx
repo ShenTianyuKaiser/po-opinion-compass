@@ -14,8 +14,8 @@ export function FooterPanel(props: IProps) {
   const chips: ChipItem[] = [
     {
       text: (
-        <div className="flex flex-col items-center">
-          <SearchOutline fontSize={20} />
+        <div className="flex flex-col items-center text-black">
+          <SearchOutline color="black" fontSize={20} />
           发现
         </div>
       ),
@@ -23,8 +23,8 @@ export function FooterPanel(props: IProps) {
     },
     {
       text: (
-        <div className="flex flex-col items-center">
-          <HistogramOutline fontSize={20} />
+        <div className="flex flex-col items-center text-black">
+          <HistogramOutline color="black" fontSize={20} />
           报告
         </div>
       ),
@@ -32,8 +32,8 @@ export function FooterPanel(props: IProps) {
     },
     {
       text: (
-        <div className="flex flex-col items-center">
-          <UserOutline fontSize={20} />
+        <div className="flex flex-col items-center text-black">
+          <UserOutline color="black" fontSize={20} />
           我的
         </div>
       ),

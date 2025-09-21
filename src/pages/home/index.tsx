@@ -1,5 +1,6 @@
 import { List, Card, Input, Button, Space, Modal, Toast } from 'antd-mobile'
 import { HeartOutline, StarOutline, MessageOutline, AddOutline, CloseOutline } from 'antd-mobile-icons'
+import UserInfoPanel from 'src/components/user-info-panel'
 import { useState } from 'react'
 import { useData } from 'src/hooks/useData'
 import './index.less'
@@ -11,8 +12,6 @@ export default function Home() {
   const [currentSubsribeInputValue, setCurrentSubsribeInputValue] = useState('')
   const [currentKeyword, setCurrentKeyword] = useState('')
 
-  console.warn('------home---------', { data, items })
-
   const getItemTags = (item: any) => {
     const tagText = item.fields['笔记标签']?.[0]?.text
     return tagText?.split(',') || []
@@ -22,8 +21,10 @@ export default function Home() {
     return item.fields['笔记标题']?.[0]?.text || ''
   }
 
-  const getImgSrc = (item: any) => {
-    return item.fields['笔记封面图链接']?.[0]?.text || ''
+  const getImgSrc = (index: number) => {
+    // import进来的30张图片中随机取一张
+    const imgIndex = (index % 30) + 1
+    return `/imgs/${imgIndex}.webp`
   }
 
   const getLikeCount = (item: any) => {
@@ -90,7 +91,8 @@ export default function Home() {
 
   return (
     <div className="bg-blue-50">
-      <div className="flex items-center justify-between h-14 w-full bg-black sticky top-0 z-[10000] px-5">
+      <UserInfoPanel />
+      <div className="flex items-center justify-between h-14 w-full bg-black sticky top-14 z-[10000] px-5">
         <div className="flex gap-2">
           {keywords.length > 0 ? (
             keywords.map((kw: string) => (
@@ -147,14 +149,15 @@ export default function Home() {
                 <div className="absolute flex justify-center items-center top-5 left-5 w-[38px] h-[18px] bg-[#02000066] border-1 border-white rounded-[2px]">
                   <div className="text-white text-[11px]">笔记</div>
                 </div>
-                <img className="w-full h-[242px] object-fill rounded-t-2xl" src={getImgSrc(item)} />
-                <div className="w-full h-[269px] text-sm leading-6 text-gray-800 p-5 overflow-y-auto">
-                  {item.fields['笔记内容']?.[0]?.text || ''}
+                <img className="w-full h-[450px] object-cover object-top rounded-2xl" src={getImgSrc(index)} />
+                <div className="w-full h-[70px] text-sm leading-6 text-gray-800 p-5 two-line-ellipsis">
+                  {item.fields['笔记内容']?.[0]?.text ||
+                    '#保时捷 #保时捷911 #保时捷718 #保时捷Taycan #保时捷Macan #保时捷Cayenne #保时捷Panamera #保时捷提车 #保时捷改装 #保时捷生活方式'}
                 </div>
                 <div className="w-full flex gap-2 p-5 flex-wrap">
                   {getItemTags(item).map((label: string, idx: number) => (
                     <div
-                      className="flex justify-center items-center w-fit h-[22px] px-2 text-black text-[11px] bg-[#F2F4F7] rounded-b"
+                      className="flex justify-center items-centern w-fit h-[22px] px-2 text-black text-[11px] bg-[#F2F4F7] rounded-b"
                       key={idx}
                     >
                       {label}

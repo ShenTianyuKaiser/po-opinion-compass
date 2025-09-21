@@ -3,7 +3,7 @@ import axios from 'axios'
 
 const headers = {
   'Content-Type': 'application/json',
-  Authorization: 'Bearer u-eZ52eZfLpcZUGOTudELsxck1gMFhk5GrpG20lkgw2A_j',
+  Authorization: 'Bearer u-d_OAhZVcxaHorGaakToP8kl56HN5k5apNgG0k5q82L7D',
 }
 
 export const universeAPI = {
@@ -23,11 +23,7 @@ export const useListRecords = () => {
         const result = await axios.get(
           `/api/feishu/open-apis/bitable/v1/apps/CasrbbRFqa0Eumscp4Sc24XonMc/tables/tbl4OGDrSPOrUjYi/records/search?page_size=20`,
           {
-            headers: {
-              Authorization: 'Bearer t-g1049kdy5XR5NY6ZET2COAICVJIVKITUBNI4V456',
-              'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*',
-            },
+            headers,
           },
         )
         return result
