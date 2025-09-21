@@ -3,7 +3,7 @@ import axios from 'axios'
 
 const headers = {
   'Content-Type': 'application/json',
-  Authorization: 'Bearer u-cvw.B_fKJajagTeP4ZnjDA0l0hZ5k52Ngi00khSw23Sh',
+  Authorization: 'Bearer u-cRvVIc2Lx8XHswIvahMnRTkk4.Olk50rrgG0ghEw22zk',
 }
 
 export const universeAPI = {

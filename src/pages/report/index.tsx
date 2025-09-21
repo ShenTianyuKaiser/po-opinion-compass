@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { List } from 'antd-mobile'
 import { useData } from 'src/hooks/useData'
 import RadarChart from 'src/components/radar-chart'
@@ -6,10 +7,16 @@ import TargetChart from 'src/components/target-chart'
 import EmotionChart from 'src/components/emotion-chart'
 import WordCloudChart from 'src/components/word-cloud-chart'
 import PopularChart from 'src/components/popular-chart'
+import NoteCountChart from 'src/components/note-count-chart'
 
 export default function Report() {
   const { data } = useData()
   const items: any[] = (data?.items || []).filter((item: any) => item.fields['笔记标题']?.[0]?.text !== '')
+
+  // 每次进入这个页面，都滚动到最上面
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }, [])
 
   const parseCount = (str: string): number => {
     if (str.endsWith('万')) {
@@ -116,20 +123,27 @@ export default function Report() {
 
   return (
     <div className="bg-blue-50 min-h-[900px]">
+      {/*关键词*/}
+      <div className="flex items-center justify-between w-full h-14 sticky top-0 z-[10000] px-5 bg-blue-50 text-blue-500 text-xl font-medium">
+        关键词：保时捷
+      </div>
       <List>
-        <List.Item title="关键词声量分布">
+        <List.Item>
+          <NoteCountChart value={items.length} title="笔记总数" />
+        </List.Item>
+        <List.Item>
           <RadarChart data={radarChartData} />
         </List.Item>
-        <List.Item title="作者类型分布">
+        <List.Item>
           <AuthorTypeChart data={authorData} />
         </List.Item>
-        <List.Item title="作者发笔记意图分布">
+        <List.Item>
           <TargetChart data={targetData} />
         </List.Item>
-        <List.Item title="情感分布分析">
+        <List.Item>
           <EmotionChart data={emotionData} />
         </List.Item>
-        <List.Item title="词云图">
+        <List.Item>
           <div>
             <WordCloudChart id="note-word-cloud-chart" data={noteData} title="笔记词云" />
             <WordCloudChart id="tag-word-cloud-chart" data={tagData} title="话题标签词云" />
