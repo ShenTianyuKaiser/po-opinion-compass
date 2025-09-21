@@ -96,8 +96,8 @@ export default function Home() {
       onCancel: () => {
         setCurrentSubsribeInputValue('')
       },
-      confirmText: '订阅',
-      cancelText: '取消',
+      confirmText: <Button fill="none">确定</Button>,
+      cancelText: <Button fill="none">取消</Button>,
     })
   }
 
