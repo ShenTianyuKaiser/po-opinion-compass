@@ -1,7 +1,7 @@
 import { List, Card, Input, Button, Space, Modal, Toast } from 'antd-mobile'
-import { HeartOutline, StarOutline, MessageOutline, AddOutline, CloseOutline } from 'antd-mobile-icons'
+import { HeartOutline, StarOutline, MessageOutline, AddOutline, CloseOutline, UpCircleOutline } from 'antd-mobile-icons'
 import UserInfoPanel from 'src/components/user-info-panel'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useData } from 'src/hooks/useData'
 import './index.less'
 
@@ -11,6 +11,11 @@ export default function Home() {
   const [keywords, setKeywords] = useState<string[]>([])
   const [currentSubsribeInputValue, setCurrentSubsribeInputValue] = useState('')
   const [currentKeyword, setCurrentKeyword] = useState('')
+
+  useEffect(() => {
+    // 每次进来都滚动到最上面
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }, [])
 
   const getItemTags = (item: any) => {
     const tagText = item.fields['笔记标签']?.[0]?.text
@@ -91,6 +96,19 @@ export default function Home() {
 
   return (
     <div className="bg-blue-50">
+      {/*回到顶部按钮*/}
+      <div className="fixed bottom-20 right-5 z-[10000]">
+        <Button
+          className="flex items-center justify-center bg-white w-10 h-10"
+          fill="solid"
+          size="small"
+          onClick={() => {
+            window.scrollTo({ top: 0, behavior: 'smooth' })
+          }}
+        >
+          <UpCircleOutline fontSize={20} />
+        </Button>
+      </div>
       <UserInfoPanel />
       <div className="flex items-center justify-between h-14 w-full bg-black sticky top-14 z-[10000] px-5">
         <div className="flex gap-2">
@@ -165,7 +183,7 @@ export default function Home() {
                   ))}
                 </div>
                 <div className="w-full flex justify-between items-center p-5">
-                  <Input className="bg-[#F2F4F7] rounded-full w-[155px] p-2" placeholder="pingdiansha~" />
+                  <Input className="bg-[#F2F4F7] rounded-full w-[155px] p-2" placeholder="评论点啥~" />
                   <div className="flex items-center gap-2">
                     <div className="flex items-center gap-[2px]">
                       <HeartOutline fontSize={20} />
