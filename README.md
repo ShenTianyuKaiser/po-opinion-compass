@@ -1,6 +1,6 @@
-## Vite-React-TS-Tailwind-Starter
+## 小红书智能舆情罗盘
 
-Choosing a technology stack is a very subjective matter, if you happen to like using `Vite`, `Tailwind`, `TS` and `shadcn ui` and more to build React SPA applications, then give it a try.
+AI时代，人人都是产品经理
 
 ## Run
 
